@@ -10,15 +10,13 @@ import UIKit
 
 class HomeViewController: UICollectionViewController {
 
-    let videoCellID = "videoCell"
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.title = "Home"
         collectionView.backgroundColor = .white
 
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: videoCellID)
+        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: VideoCell.videoCellID)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -26,10 +24,15 @@ class HomeViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: videoCellID, for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: VideoCell.videoCellID, for: indexPath)
+    }
 
-        cell.backgroundColor = .red
-        return cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
 
