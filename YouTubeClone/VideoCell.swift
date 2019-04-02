@@ -15,35 +15,41 @@ class VideoCell: UICollectionViewCell {
     let thumbNail: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .blue
+        imageView.image = UIImage(named: "taylor_swift_blank_space")
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
 
     let separator: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         return view
     }()
 
     let profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .green
+        imageView.image = UIImage(named: "taylor_swift_profile")
+        imageView.layer.cornerRadius = 22
+        imageView.layer.masksToBounds = true
         return imageView
     }()
 
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .purple
+        label.text = "Taylor Swift - Blank Space"
         return label
     }()
 
     let descriptionText: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .red
+        textView.text = "Many people have viewed this video. It is really good."
+        textView.contentInset = UIEdgeInsets(top: -4, left: -4, bottom: 0, right: 0)
+        textView.textColor = UIColor.lightGray
         return textView
     }()
 
@@ -76,7 +82,7 @@ class VideoCell: UICollectionViewCell {
         addConstraints(withFormat: "V:[v0(20)]", forSubviews: titleLabel)
 
         // Description view layout
-        addConstraint(NSLayoutConstraint(item: descriptionText, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4))
+        addConstraint(NSLayoutConstraint(item: descriptionText, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: descriptionText, attribute: .left, relatedBy: .equal, toItem: profileImage, attribute: .right, multiplier: 1, constant: 8))
         addConstraint(NSLayoutConstraint(item: descriptionText, attribute: .right, relatedBy: .equal, toItem: titleLabel, attribute: .right, multiplier: 1, constant: 0))
         addConstraints(withFormat: "V:[v0(20)]", forSubviews: descriptionText)
